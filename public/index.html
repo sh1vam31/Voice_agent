@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voice Memory To-Do Agent</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="agent-panel" aria-label="Voice agent">
+        <div class="top-bar">
+          <div>
+            <p class="eyebrow">Voice AI Assignment</p>
+            <h1>Voice Memory To-Do Agent</h1>
+          </div>
+          <div class="top-actions">
+            <button id="themeToggleBtn" class="secondary-button" type="button" aria-pressed="false">Dark Mode</button>
+            <button id="resetDataBtn" class="ghost-button" type="button">Reset</button>
+          </div>
+        </div>
+
+        <div class="voice-console">
+          <button id="voiceBtn" class="voice-button" type="button" aria-label="Start voice input">
+            <span class="mic-icon">●</span>
+            <span id="voiceBtnText">Start Voice</span>
+          </button>
+          <div class="status-block">
+            <p id="statusText">Ready. Speak or type a task.</p>
+            <p id="transcriptText" class="transcript">Try: “Add submit AI assignment tomorrow.”</p>
+          </div>
+        </div>
+
+        <form id="chatForm" class="chat-input">
+          <input id="messageInput" type="text" autocomplete="off" placeholder="Type a command or normal message..." />
+          <button type="submit">Send</button>
+        </form>
+
+        <div id="chatLog" class="chat-log" aria-live="polite"></div>
+      </section>
+
+      <aside class="workspace-panel" aria-label="Agent workspace">
+        <section class="tool-section">
+          <div class="section-heading">
+            <h2>To-Do Tools</h2>
+            <span id="todoCount">0 items</span>
+          </div>
+          <ul id="todoList" class="todo-list"></ul>
+        </section>
+
+        <section class="tool-section">
+          <div class="section-heading">
+            <h2>Memory</h2>
+            <span id="memoryCount">0 saved</span>
+          </div>
+          <ul id="memoryList" class="memory-list"></ul>
+        </section>
+
+        <section class="tool-section">
+          <div class="section-heading">
+            <h2>Tool Calls</h2>
+          </div>
+          <ol id="toolLog" class="tool-log"></ol>
+        </section>
+      </aside>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

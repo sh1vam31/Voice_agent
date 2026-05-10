@@ -1,0 +1,401 @@
+:root {
+  --bg: #f5f7fb;
+  --panel: #ffffff;
+  --surface: #f8fafc;
+  --surface-raised: #fbfcfe;
+  --agent-message: #eef2f7;
+  --ink: #15202b;
+  --muted: #667085;
+  --line: #d9e0ea;
+  --accent: #0f766e;
+  --accent-strong: #115e59;
+  --warning: #b45309;
+  --danger: #b42318;
+  --danger-soft: #fff1f0;
+  --shadow: 0 18px 55px rgba(21, 32, 43, 0.12);
+}
+
+body.dark-theme {
+  --bg: #101418;
+  --panel: #171d24;
+  --surface: #111820;
+  --surface-raised: #1c242d;
+  --agent-message: #222c36;
+  --ink: #edf2f7;
+  --muted: #a6b3c2;
+  --line: #2e3946;
+  --accent: #2dd4bf;
+  --accent-strong: #0f766e;
+  --warning: #d97706;
+  --danger: #f97066;
+  --danger-soft: #331b1b;
+  --shadow: 0 18px 55px rgba(0, 0, 0, 0.36);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+input {
+  color: var(--ink);
+  background: var(--panel);
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(360px, 0.8fr);
+  gap: 24px;
+  width: min(1180px, calc(100% - 32px));
+  min-height: calc(100vh - 32px);
+  margin: 16px auto;
+}
+
+.agent-panel,
+.workspace-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.agent-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+}
+
+.workspace-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 22px;
+  overflow: auto;
+}
+
+.top-bar,
+.section-heading,
+.voice-console,
+.chat-input {
+  display: flex;
+  align-items: center;
+}
+
+.top-bar,
+.section-heading {
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 3.7rem);
+  line-height: 1.02;
+}
+
+h2 {
+  font-size: 1rem;
+}
+
+.ghost-button,
+.secondary-button,
+.chat-input button,
+.voice-button,
+.mini-button {
+  border: 0;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: 750;
+}
+
+.ghost-button {
+  padding: 10px 14px;
+  color: var(--danger);
+  background: var(--danger-soft);
+}
+
+.secondary-button {
+  padding: 10px 14px;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.voice-console {
+  gap: 18px;
+  padding: 22px;
+  margin: 28px 0 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.voice-button {
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  width: 138px;
+  min-width: 138px;
+  aspect-ratio: 1;
+  color: #ffffff;
+  background: var(--accent);
+}
+
+.voice-button.listening {
+  background: var(--warning);
+}
+
+.mic-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 18px;
+}
+
+.status-block p {
+  margin: 0;
+}
+
+#statusText {
+  font-weight: 800;
+}
+
+.transcript {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.chat-input {
+  gap: 10px;
+}
+
+.chat-input input {
+  width: 100%;
+  min-width: 0;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  outline: none;
+}
+
+.chat-input input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.14);
+}
+
+.chat-input button {
+  padding: 14px 18px;
+  color: #ffffff;
+  background: var(--accent);
+}
+
+.chat-log {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 320px;
+  max-height: calc(100vh - 310px);
+  margin-top: 18px;
+  overflow: auto;
+}
+
+.message {
+  max-width: 82%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  line-height: 1.45;
+}
+
+.message.user {
+  align-self: flex-end;
+  color: #ffffff;
+  background: var(--accent-strong);
+}
+
+.message.agent {
+  align-self: flex-start;
+  background: var(--agent-message);
+}
+
+.tool-section {
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.tool-section:last-child {
+  border-bottom: 0;
+}
+
+.section-heading span {
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.todo-list,
+.memory-list,
+.tool-log {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0 0;
+  padding: 0;
+}
+
+.todo-list,
+.memory-list {
+  list-style: none;
+}
+
+.todo-item,
+.memory-item,
+.tool-log li {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-raised);
+}
+
+.todo-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: start;
+  gap: 10px;
+  padding: 12px;
+}
+
+.todo-item input {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+}
+
+.todo-title {
+  margin: 0;
+  font-weight: 800;
+}
+
+.todo-meta,
+.empty-state {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.todo-meta {
+  margin: 4px 0 0;
+}
+
+.todo-item.done .todo-title {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.mini-button {
+  padding: 7px 9px;
+  color: var(--danger);
+  background: var(--danger-soft);
+  font-size: 0.82rem;
+}
+
+.memory-item {
+  padding: 12px;
+}
+
+.memory-item p {
+  margin: 0;
+}
+
+.memory-time {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.tool-log {
+  padding-left: 20px;
+}
+
+.tool-log li {
+  padding: 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.82rem;
+  word-break: break-word;
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .chat-log {
+    max-height: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .agent-panel,
+  .workspace-panel {
+    padding: 18px;
+  }
+
+  .top-bar,
+  .voice-console {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .top-actions {
+    justify-content: stretch;
+  }
+
+  .top-actions button {
+    flex: 1;
+  }
+
+  .voice-button {
+    width: 100%;
+    min-width: 0;
+    aspect-ratio: auto;
+    min-height: 112px;
+  }
+
+  .message {
+    max-width: 100%;
+  }
+}

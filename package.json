@@ -1,0 +1,18 @@
+{
+  "name": "voice-memory-todo-agent",
+  "version": "1.0.0",
+  "description": "Voice-based AI agent with To-Do tools and memory for an assignment demo.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "voice-agent",
+    "todo",
+    "memory",
+    "web-speech-api"
+  ],
+  "author": "",
+  "license": "MIT"
+}
